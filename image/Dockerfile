@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-MAINTAINER Bertrand Gouny <bertrand.gouny@osixia.net>
+FROM ubuntu:bionic
+MAINTAINER Robert Mendal <rmendal@gmail.com>
 
 COPY . /container
 RUN /container/build.sh

@@ -42,6 +42,7 @@ ln -sf /bin/true /sbin/initctl
 dpkg-divert --local --rename --add /usr/bin/ischroot
 ln -sf /bin/true /usr/bin/ischroot
 
+#NEEDED in 18.04?
 # apt-utils fix for Ubuntu 16.04
 $minimal_apt_get_install apt-utils
 
