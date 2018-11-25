@@ -1,6 +1,6 @@
 # rmendal/ubuntu-light-baseimage
 
-[![](https://images.microbadger.com/badges/image/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own image badge on microbadger.com")  
 [![](https://images.microbadger.com/badges/version/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own version badge on microbadger.com")
  [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/osixia/ubuntu-light-baseimage/) 
 
