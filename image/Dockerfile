@@ -1,5 +1,4 @@
 FROM ubuntu:bionic
-MAINTAINER Robert Mendal <rmendal@gmail.com>
 
 COPY . /container
 RUN /container/build.sh
