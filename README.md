@@ -1,19 +1,13 @@
-# osixia/ubuntu-light-baseimage
+# rmendal/ubuntu-light-baseimage
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/osixia/ubuntu-light-baseimage.svg)][hub]
-[![Docker Stars](https://img.shields.io/docker/stars/osixia/ubuntu-light-baseimage.svg)][hub]
-[![](https://images.microbadger.com/badges/image/osixia/ubuntu-light-baseimage.svg)](http://microbadger.com/images/osixia/ubuntu-light-baseimage "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own image badge on microbadger.com")  [![](https://images.microbadger.com/badges/version/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own version badge on microbadger.com")
+ [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/osixia/ubuntu-light-baseimage/) 
 
-[hub]: https://hub.docker.com/r/osixia/ubuntu-light-baseimage/
+An Ubuntu 18:04 (Bionic) based docker image to build a reliable image quickly. This image provides a simple opinionated solution to build a multiple or single process image with a minimum of layers and an optimized build. This image was forked from [Osixia docker-light-baseimage Ubuntu branch](https://github.com/osixia/docker-light-baseimage/tree/ubuntu).
 
-Latest release: 0.2.1 -  [Changelog](CHANGELOG.md)
- | [Docker Hub](https://hub.docker.com/r/osixia/ubuntu-light-baseimage/) 
+The aim of this image is to be used as a base for your own Docker images. It's a base on the awesome work of: [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
 
-A Ubuntu 16:04 (Xenial) based docker image to build reliable image quickly. This image provide a simple opinionated solution to build multiple or single process image with minimum of layers and an optimized build.
-
-The aims of this image is to be used as a base for your own Docker images. It's base on the awesome work of: [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
-
-Other base distribution are available:
+Other base distributions by Osixia are available:
 - [Alpine 3.6](https://github.com/osixia/docker-light-baseimage/tree/feature-linux-alpine) | Beta | [Docker Hub](https://hub.docker.com/r/osixia/alpine-light-baseimage/) | [![](https://images.microbadger.com/badges/image/osixia/alpine-light-baseimage.svg)](http://microbadger.com/images/osixia/alpine-light-baseimage "Get your own image badge on microbadger.com")
 - [Debian Stretch](https://github.com/osixia/docker-light-baseimage) | [Docker Hub](https://hub.docker.com/r/osixia/light-baseimage/) | [![](https://images.microbadger.com/badges/image/osixia/light-baseimage.svg)](http://microbadger.com/images/osixia/light-baseimage "Get your own image badge on microbadger.com")
 
@@ -69,10 +63,10 @@ If you find this image useful here's how you can help:
 
 ## Overview
 
-This image takes all the advantages of [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) but makes programs optional which allow more lightweight images and single process images. It also define simple directory structure and files to quickly set how a program (here called service) is installed, setup and run.
+This image takes all the advantages of [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) but makes programs optional which allow more lightweight images and single process images. It also defines simple directory structure and files to quickly set how a program (called services herein) is installed, setup and run.
 
-So major features are:
- - Greats building tools to minimize the image number of layers and optimize image build.
+Some major features are:
+ - Great building tools to minimize the number of layers and optimize image build.
  - Simple way to install services and multiple process image stacks (runit, cron, syslog-ng-core and logrotate) if needed.
  - Getting environment variables from **.yaml** and **.json** files.
  - Special environment files **.startup.yaml** and **.startup.json** deleted after image startup files first execution to keep the image setup secret.
@@ -86,28 +80,30 @@ This image use four directories:
 
 - **/container/environment**: for environment files.
 - **/container/service**: for services to install, setup and run.
-- **/container/service-available**: for service that may be on demand downloaded, installed, setup and run.
+- **/container/service-available**: for service(s) that may be on demand downloaded, installed, setup and run.
 - **/container/tool**: for image tools.
 
-By the way at run time another directory is created:
-- **/container/run**: To store container run environment, state, startup files and process to run based on files in  /container/environment and /container/service directories.
+At run time another directory is created:
+- **/container/run**: To store the containers run environment, state, startup files and process to run based on files in  /container/environment and /container/service directories.
 
-But this will be dealt with in the following section.
+But this will be covered in the following section.
 
 ### Service directory structure
 
-This section define a service directory that can be added in /container/service or /container/service-available.
+This section defines a service directory that can be added in /container/service or /container/service-available.
 
 - **my-service**: root directory
 - **my-service/install.sh**: install script (not mandatory).
-- **my-service/startup.sh**: startup script to setup the service when the container start (not mandatory).
+- **my-service/startup.sh**: startup script to setup the service when the container starts (not mandatory).
 - **my-service/process.sh**: process to run (not mandatory).
-- **my-service/finish.sh**: finish script run when the process script exit (not mandatory).
+- **my-service/finish.sh**: finish script run when the process script exits (not mandatory).
 - **my-service/...** add whatever you need!
 
-Ok that's pretty all to know to start building our first images!
+That's pretty much all you need to know to start building our first images!
 
 ### Create a single process image
+
+**NOTE:** This section remains unchanged from the original Osixia documentation. I have no intention of updating it.
 
 #### Overview
 For this example we are going to perform a basic nginx install.
@@ -121,9 +117,9 @@ First we create the directory structure of the image:
  - **single-process-image/environment**: environment files directory.
  - **single-process-image/Dockerfile**: the Dockerfile to build this image.
 
-**service** and **environment** directories name are arbitrary and can be changed but make sure to adapt their name everywhere and especially in the Dockerfile.
+**service** and **environment** directory names are arbitrary and can be changed but make sure to adapt their name everywhere and especially in the Dockerfile.
 
-Let's now create the nginx service directory:
+Let's create the nginx service directory now:
 
  - **single-process-image/service/nginx**: service root directory
  - **single-process-image/service/nginx/install.sh**: service installation script.
@@ -343,6 +339,8 @@ Refresh [http://localhost:8080/](http://localhost:8080/) and you should see:
 > Hi! I'm bobby.
 
 ### Create a multiple process image
+
+**NOTE:** This section remains unchanged from the original Osixia documentation. I have no intention of updating it.
 
 #### Overview
 
