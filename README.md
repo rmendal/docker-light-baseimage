@@ -1,6 +1,7 @@
 # rmendal/ubuntu-light-baseimage
 
-[![](https://images.microbadger.com/badges/image/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own image badge on microbadger.com")    [![](https://images.microbadger.com/badges/version/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/rmendal/bionic-light.svg)](https://microbadger.com/images/rmendal/bionic-light "Get your own version badge on microbadger.com")
  [Changelog](CHANGELOG.md) | [Docker Hub](https://hub.docker.com/r/osixia/ubuntu-light-baseimage/) 
 
 An Ubuntu 18:04 (Bionic) based docker image to build a reliable image quickly. This image provides a simple opinionated solution to build a multiple or single process image with a minimum of layers and an optimized build. This image was forked from [Osixia docker-light-baseimage Ubuntu branch](https://github.com/osixia/docker-light-baseimage/tree/ubuntu).
